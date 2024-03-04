@@ -111,8 +111,7 @@ export class Microframework {
       .then(() => {
         if (this.frameworkConfig && this.frameworkConfig.showBootstrapTime)
           console.log(
-            `Application is up and running. It took ${
-              +new Date() - bootstrapTime - (this.frameworkConfig.bootstrapTimeout || 0)
+            `Application is up and running. It took ${+new Date() - bootstrapTime - (this.frameworkConfig.bootstrapTimeout || 0)
             } ms to bootstrap the app.`
           );
 
@@ -176,7 +175,7 @@ export class Microframework {
 
       try {
         const asciiArt = require('ascii-art');
-        asciiArt.font(this.frameworkConfig.logo, 'Doom', (logo: string) => ok(logo.trim() + '\r\n'));
+        asciiArt.font(this.frameworkConfig.logo, 'Doom', (error, logo: string) => ok(logo.trim() + '\r\n'));
       } catch (err) {
         fail(new MicroframeworkAsciiArtNotInstalledError());
       }
